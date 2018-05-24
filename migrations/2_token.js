@@ -1,10 +1,10 @@
 /* global artifacts */
 
-const Token = artifacts.require('tokens/eip20/EIP20.sol');
+const Token = artifacts.require('EIP621OraclizedToken.sol');
 
 const fs = require('fs');
 
-module.exports = (deployer, network) => {
+module.exports = (deployer, network, accounts) => {
   const config = JSON.parse(fs.readFileSync('./conf/config.json'));
 
   async function giveTokensTo(tokenHolders) {
@@ -28,7 +28,7 @@ module.exports = (deployer, network) => {
   if (config.token.deployToken) {
     deployer.deploy(
       Token, config.token.supply, config.token.name, config.token.decimals,
-      config.token.symbol,
+      config.token.symbol, accounts[0],
     )
       .then(async () => giveTokensTo(config.token.tokenHolders));
   } else {

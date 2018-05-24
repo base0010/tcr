@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 /* global assert contract artifacts */
 const Registry = artifacts.require('Registry.sol');
-const Token = artifacts.require('EIP20.sol');
+const Token = artifacts.require('EIP621OraclizedToken.sol');
 
 const fs = require('fs');
 const BN = require('bignumber.js');

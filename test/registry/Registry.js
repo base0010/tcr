@@ -2,7 +2,7 @@
 /* global assert contract artifacts */
 
 const Registry = artifacts.require('Registry.sol');
-const Token = artifacts.require('EIP20.sol');
+const Token = artifacts.require('EIP621OraclizedToken.sol');
 const Parameterizer = artifacts.require('Parameterizer.sol');
 const PLCRVoting = artifacts.require('PLCRVoting.sol');
 

@@ -1,7 +1,7 @@
 pragma solidity^0.4.11;
 
 import "plcrvoting/PLCRVoting.sol";
-import "tokens/eip20/EIP20Interface.sol";
+import "plcrvoting/EIP621OraclizedToken.sol";
 import "zeppelin/math/SafeMath.sol";
 
 contract Parameterizer {
@@ -57,7 +57,7 @@ contract Parameterizer {
   mapping(bytes32 => ParamProposal) public proposals;
 
   // Global Variables
-  EIP20Interface public token;
+  EIP621OraclizedToken public token;
   PLCRVoting public voting;
   uint public PROCESSBY = 604800; // 7 days
 
@@ -98,7 +98,7 @@ contract Parameterizer {
     uint _voteQuorum,
     uint _pVoteQuorum
     ) public {
-      token = EIP20Interface(_tokenAddr);
+      token = EIP621OraclizedToken(_tokenAddr);
       voting = PLCRVoting(_plcrAddr);
 
       set("minDeposit", _minDeposit);
